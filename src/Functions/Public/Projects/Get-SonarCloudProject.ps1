@@ -51,15 +51,15 @@
         xCheckScriptSonarCloudConnection
 
         $apiUrl = '/projects/search'
-        function CalculateOutput([PSCustomObject]$Project) {
+        function CalculateOutput([PSCustomObject]$project){
 
             [PSCustomObject] @{
 
-                Name = $Project.name
-                Key = $Project.Key
-                Organization = $Project.organization
-                Qualifier = $Project.qualifier
-                Visibility = $Project.visibility
+                Name = $project.name
+                Key = $project.Key
+                Organization = $project.organization
+                Qualifier = $project.qualifier
+                Visibility = $project.visibility
             }
         }
     }
