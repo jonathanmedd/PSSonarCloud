@@ -7,7 +7,7 @@
     Get SonarCloud PermissionTemplates
 
     .PARAMETER organization
-    SonarCloud organization
+    SonarCloud Organization
 
     .PARAMETER permissionTemplateName
     SonarCloud permissionTemplateName

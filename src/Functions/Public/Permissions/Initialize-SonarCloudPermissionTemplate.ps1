@@ -7,7 +7,7 @@
     Apply a SonarCloud Permission Template
 
     .PARAMETER organization
-    SonarCloud organization
+    SonarCloud Organization
 
     .PARAMETER projectKey
     Project Key, e.g. GitLab repo id

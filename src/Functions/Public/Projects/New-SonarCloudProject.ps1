@@ -7,10 +7,10 @@
     Create a SonarCloud Project
 
     .PARAMETER organization
-    SonarCloud organization
+    SonarCloud Organization
 
     .PARAMETER projectName
-    SonarCloud projectName
+    SonarCloud Project Name
 
     .PARAMETER projectKey
     Project Key, e.g. GitLab repo id

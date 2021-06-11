@@ -7,10 +7,10 @@
     Get SonarCloud Projects
 
     .PARAMETER organization
-    SonarCloud organization
+    SonarCloud Organization
 
     .PARAMETER projectName
-    SonarCloud projectName
+    SonarCloud Project Name
 
     .PARAMETER pageSize
     Specify how many records to return

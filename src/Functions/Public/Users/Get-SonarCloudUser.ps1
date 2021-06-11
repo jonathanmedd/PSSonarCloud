@@ -7,7 +7,7 @@
     Get SonarCloud Users
 
     .PARAMETER userName
-    SonarCloud userName - filter on login, name or email
+    SonarCloud User Name - filter on login, name or email
 
     .PARAMETER pageSize
     Specify how many records to return
