@@ -11,6 +11,6 @@
 # --- Clean up psSonarCloudConnection variable on module remove
 $ExecutionContext.SessionState.Module.OnRemove = {
 
-    Remove-Variable -Name psSonarCloudConnection -Force -ErrorAction SilentlyContinue
+    Remove-Variable -Name SonarCloudConnection -Force -ErrorAction SilentlyContinue
 
 }
