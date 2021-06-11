@@ -1,0 +1,6 @@
+
+site_name: PowerShell SonarCloud Module Documentation
+site_url: https://jonathanmedd.github.io/PSSonarCloud/
+
+theme:
+  name: material
