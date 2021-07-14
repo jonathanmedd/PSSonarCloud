@@ -5,6 +5,7 @@
 
     .DESCRIPTION
     Get SonarCloud Organization Members
+    Note this is from an unsupported and undocumented part of the API, /organizations, so use with caution since it is subject to change / disruption
 
     .PARAMETER organization
     SonarCloud Organization
