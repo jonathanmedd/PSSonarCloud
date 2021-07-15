@@ -67,7 +67,7 @@
                     ps           = $pageSize
                     p            = $page
                 }
-                $response = Invoke-SonarCloudRestMethod -Method GET -URI $apiUrl -queryParameters $queryParameters -Verbose:$VerbosePreferenc
+                $response = Invoke-SonarCloudRestMethod -Method GET -URI $apiUrl -queryParameters $queryParameters -Verbose:$VerbosePreference
 
                 if ($response.users){
 
