@@ -28,19 +28,19 @@
     .EXAMPLE
     Get-SonarCloudProject -organization 'organization1' -projectName 'Project A'
 #>
-    [CmdletBinding(DefaultParameterSetName="Standard")][OutputType('System.Management.Automation.PSObject')]
+    [CmdletBinding(DefaultParameterSetName = "Standard")][OutputType('System.Management.Automation.PSObject')]
 
     Param (
 
-        [parameter(Mandatory=$true)]
+        [parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [String]$organization,
 
-        [parameter(Mandatory=$false,ParameterSetName="ByName")]
+        [parameter(Mandatory = $false, ParameterSetName = "ByName")]
         [ValidateNotNullOrEmpty()]
         [String[]]$projectName,
 
-        [parameter(Mandatory=$false)]
+        [parameter(Mandatory = $false)]
         [ValidateNotNullOrEmpty()]
         [Int]$pageSize = 100
     )
@@ -51,15 +51,15 @@
         xCheckScriptSonarCloudConnection
 
         $apiUrl = '/projects/search'
-        function CalculateOutput([PSCustomObject]$project){
+        function CalculateOutput([PSCustomObject]$project) {
 
             [PSCustomObject] @{
 
-                Name = $project.name
-                Key = $project.Key
+                Name         = $project.name
+                Key          = $project.Key
                 Organization = $project.organization
-                Qualifier = $project.qualifier
-                Visibility = $project.visibility
+                Qualifier    = $project.qualifier
+                Visibility   = $project.visibility
             }
         }
     }
@@ -73,18 +73,18 @@
                 # --- Get Project by name
                 'ByName' {
 
-                    foreach ($name in $projectName){
+                    foreach ($name in $projectName) {
 
                         $queryParameters = @{
 
                             organization = $organization
-                            q = $name
-                            ps  = $pageSize
+                            q            = $name
+                            ps           = $pageSize
                         }
 
                         $response = Invoke-SonarCloudRestMethod -Method GET -URI $apiUrl -queryParameters $queryParameters -Verbose:$VerbosePreference
 
-                        foreach ($project in $response.components){
+                        foreach ($project in $response.components) {
 
                             CalculateOutput $project
                         }
@@ -95,17 +95,30 @@
                 # --- No parameters passed so return all Projects
                 'Standard' {
 
-                    $queryParameters = @{
+                    $page = 1
+                    do {
+                        $queryParameters = @{
 
-                        organization = $organization
-                        ps  = $pageSize
+                            organization = $organization
+                            ps           = $pageSize
+                            p            = $page
+                        }
+                        $Response = Invoke-SonarCloudRestMethod -Method GET -URI $apiUrl -queryParameters $queryParameters -Verbose:$VerbosePreference
+
+                        if ($response.components){
+
+                            foreach ($project in $response.components) {
+
+                                CalculateOutput $project
+                            }
+
+                            $page++
+                        }
+                        else {
+                            $escape = $true
+                        }
                     }
-                    $Response = Invoke-SonarCloudRestMethod -Method GET -URI $apiUrl -queryParameters $queryParameters -Verbose:$VerbosePreference
-
-                    foreach ($project in $response.components){
-
-                        CalculateOutput $project
-                    }
+                    until ($escape)
                 }
             }
         }
