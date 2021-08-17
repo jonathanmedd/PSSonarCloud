@@ -58,8 +58,11 @@ $Requirements = @(
     }
 )
 
-# - Testing configured repository
-Get-PSRepository
+# - Configure default PowerShell Gallery Repository if not present
+if (-not (Get-PSRepository)){
+
+    Register-PSRepository -Default
+}
 
 # --- Install dependencies
 Write-Host "Installing required modules:"
