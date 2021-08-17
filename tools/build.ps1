@@ -58,6 +58,9 @@ $Requirements = @(
     }
 )
 
+# - Testing configured repository
+Get-PSRepository
+
 # --- Install dependencies
 Write-Host "Installing required modules:"
 foreach ($RequiredModule in $Requirements) {
