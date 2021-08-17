@@ -62,6 +62,9 @@ $Requirements = @(
 if (-not (Get-PSRepository)){
 
     Register-PSRepository -Default
+
+    Write-Host "Checking repos again"
+    Get-PSRepository
 }
 
 # --- Install dependencies
