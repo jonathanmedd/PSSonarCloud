@@ -61,7 +61,7 @@ $Requirements = @(
 # - Configure default PowerShell Gallery Repository if not present
 if (-not (Get-PSRepository)){
 
-    Register-PSRepository -Default
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
     Write-Host "Checking repos again"
     Get-PSRepository
