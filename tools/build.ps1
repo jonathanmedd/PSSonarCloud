@@ -62,9 +62,6 @@ $Requirements = @(
 if (-not (Get-PSRepository)){
 
     Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-
-    Write-Host "Checking repos again"
-    Get-PSRepository
 }
 
 # --- Install dependencies
